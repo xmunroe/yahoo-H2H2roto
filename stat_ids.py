@@ -1,3 +1,5 @@
+#Lookup table for yahoos fantasy baseball stats as well as some additional ones
+
 stat_ids = {
     7: "Runs",
     12: "HRs",
@@ -14,4 +16,5 @@ stat_ids = {
     83: "QS",
     "teamname": "Team Name",
     "K/9": "K/9"
+    "teamid": "teamid"
     }
