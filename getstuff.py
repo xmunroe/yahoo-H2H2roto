@@ -1,6 +1,7 @@
 from yahoo_oauth import OAuth1
 from myql.utils import pretty_json
 from myql import MYQL
+from stat_ids import stat_ids
 import csv
 import os
 
@@ -17,7 +18,7 @@ response = yql.raw_query('select * from fantasysports.leagues where use_login=1 
 r = response.json()
 league_key = r['query']['results']['league'][0]['league_key']
 print league_key
-
+"""
 stat_ids = {
     7: "Runs",
     12: "HRs",
@@ -35,7 +36,7 @@ stat_ids = {
     "teamname": "Team Name",
     "K/9": "K/9"
     }
-
+"""
 teamid = range(1,13)
 rotostats = {}
 first = 0
@@ -59,4 +60,3 @@ for i in teamid:
             myFileWriter.writeheader()
             first += 1
         myFileWriter.writerow(rotostats)
-"""
