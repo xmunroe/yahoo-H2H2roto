@@ -13,14 +13,10 @@ if not oauth.token_is_valid():
 
 yql = MYQL(format='json', oauth=oauth)
 
-#get gameid
-response = yql.select('fantasysports.games').where(['game_key', '=', 'mlb'])
+response = yql.raw_query('select * from fantasysports.leagues where use_login=1 and game_key in ("mlb")')
 r = response.json()
-game_key = r['query']['results']['game']['game_key']
-
-teamid = range(1,13)
-
-league_key = game_key + '.l.4637'
+league_key = r['query']['results']['league'][0]['league_key']
+print league_key
 
 stat_ids = {
     7: "Runs",
@@ -40,6 +36,7 @@ stat_ids = {
     "K/9": "K/9"
     }
 
+teamid = range(1,13)
 rotostats = {}
 first = 0
 for i in teamid:
@@ -62,3 +59,4 @@ for i in teamid:
             myFileWriter.writeheader()
             first += 1
         myFileWriter.writerow(rotostats)
+"""
