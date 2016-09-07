@@ -35,7 +35,7 @@ for i in teamid:
                 rotostats[stat_ids[int(x['stat_id'])]] = float(x['value']) if '.' in x['value'] else int(x['value'])
     rotostats["K/9"] = 9*(rotostats['Ks']/rotostats['IP'])
     rotostats['teamname'] = team_name
-    rotostats{'team_id'] = teamid
+    rotostats{'teamid'] = teamid
     print rotostats
     with open(os.path.join(myPath, "stats.csv"), "a") as myFile:
         myFileWriter = csv.DictWriter(myFile, rotostats.keys())
