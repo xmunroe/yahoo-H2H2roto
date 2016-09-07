@@ -15,6 +15,6 @@ stat_ids = {
     27: "WHIP",
     83: "QS",
     "teamname": "Team Name",
-    "K/9": "K/9"
+    "K/9": "K/9",
     "teamid": "teamid"
     }
