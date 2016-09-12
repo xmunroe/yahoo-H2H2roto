@@ -5,7 +5,8 @@ from stat_ids import stat_ids
 import csv
 import os
 
-#read in consumer secret and key
+# read in consumer secret and key
+# only consumer_key and consumer_secret are required.
 oauth = OAuth1(None, None, from_file='credentials.json')
 
 if not oauth.token_is_valid():
@@ -13,8 +14,10 @@ if not oauth.token_is_valid():
 
 yql = MYQL(format='json', oauth=oauth)
 
+# get league key info from yahoo
 response = yql.raw_query('select * from fantasysports.leagues where use_login=1 and game_key in ("mlb")')
 r = response.json()
+# if in multiple leagues will need to adjust these lines to make sure you're grabbing the right data.
 league_key = r['query']['results']['league'][0]['league_key']
 num_teams = int(r['query']['results']['league'][0]['num_teams'])
 print league_key
